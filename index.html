@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NeuroJobs — Rekomendasi Karier untuk Fresh Graduate IT</title>
+  <meta name="description" content="Cocokkan skill dan jurusan IT kamu dengan posisi dan perusahaan yang relevan. Untuk fresh graduate SMK dan kuliah.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="js/theme.js"></script>
+</head>
+<body data-page="home">
+  <div class="ambient" aria-hidden="true"></div>
+  <header id="site-nav"></header>
+
+  <main>
+    <section class="hero container">
+      <span class="pill glass reveal">Untuk fresh graduate SMK &amp; kuliah jurusan IT</span>
+      <h1 class="reveal" style="--rd:.08s">Temukan karier impian &amp; perusahaan yang pas buat skill kamu.</h1>
+      <p class="lead reveal" style="--rd:.16s">NeuroJobs membaca jurusan, pengalaman, dan skill kamu, lalu mencocokkannya ke posisi lewat Random Forest dan ke perusahaan lewat Cosine Similarity.</p>
+      <div class="hero-cta reveal" style="--rd:.24s">
+        <a class="btn btn-primary btn-lg" href="analisis.html">Mulai Analisis CV / Skill Kamu</a>
+        <a class="btn btn-glass btn-lg" href="lowongan.html">Lihat Lowongan</a>
+      </div>
+
+      <div class="demo glass reveal" style="--rd:.32s">
+        <div class="demo-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="demo-title">Coba langsung — klik skill dan lihat hasilnya berubah</span>
+        </div>
+        <div class="demo-body">
+          <div class="demo-left">
+            <span class="label">Skill kamu</span>
+            <div class="chips" id="demo-skills"></div>
+            <p class="demo-note" id="demo-note"></p>
+            <a class="btn btn-primary btn-sm" id="demo-go" href="analisis.html" style="justify-self:start">Analisis lengkap dengan skill ini</a>
+          </div>
+          <div class="demo-right">
+            <span class="label">Posisi paling cocok</span>
+            <div id="demo-roles"></div>
+            <span class="label">Perusahaan teratas</span>
+            <div id="demo-jobs"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="margin-top:72px">
+      <div class="stats reveal">
+        <div class="stat"><div class="big" id="stat-skills" data-count="0">0</div><p>Skill dipetakan ke kebutuhan industri</p></div>
+        <div class="stat"><div class="big" id="stat-roles" data-count="0">0</div><p>Posisi karier IT yang dianalisis</p></div>
+        <div class="stat"><div class="big"><span id="stat-jobs" data-count="0">0</span><em>+</em></div><p>Lowongan contoh dicocokkan secara langsung</p></div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Cara kerja</span>
+        <h2>Tiga langkah, tanpa ribet.</h2>
+        <p class="lead">Dari profil mentah ke daftar posisi dan perusahaan yang masuk akal buat kamu.</p>
+      </div>
+      <div class="steps">
+        <div class="card step reveal"><span class="n">01</span><h3>Isi profil atau unggah CV</h3><p>Pilih jurusan, pengalaman, dan skill. Kalau punya CV PDF, skill kamu terbaca otomatis di browser.</p></div>
+        <div class="card step reveal" style="--rd:.1s"><span class="n">02</span><h3>Model mencocokkan</h3><p>Skill kamu dibandingkan dengan kebutuhan tiap posisi dan tiap lowongan, lalu dihitung skor kecocokannya.</p></div>
+        <div class="card step reveal" style="--rd:.2s"><span class="n">03</span><h3>Lihat hasil &amp; skill gap</h3><p>Kamu dapat peringkat posisi, daftar perusahaan, alasan di balik tiap skor, dan skill apa yang perlu dipelajari berikutnya.</p></div>
+      </div>
+    </section>
+
+    <section class="section container" style="padding-top:0">
+      <div class="section-head reveal">
+        <span class="eyebrow">Fitur</span>
+        <h2>Yang kamu butuhkan untuk lamaran pertama.</h2>
+      </div>
+      <div class="bento">
+        <div class="card feature b-lg reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><h3>Prediksi posisi</h3><p>Peringkat posisi dari skor tertinggi, lengkap dengan alasan kenapa skill kamu cocok dan apa yang masih kurang.</p></div>
+        <div class="card feature b-lg reveal" style="--rd:.08s"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 9h5a1 1 0 0 1 1 1v11M3 21h18M8 8h2M8 12h2M8 16h2"/></svg><h3>Perusahaan yang relevan</h3><p>Lowongan diurutkan berdasarkan kemiripan skill, bisa disaring menurut tipe, lokasi, dan skor minimum.</p></div>
+        <div class="card feature b-md reveal"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10m6 10V4m6 16v-7m4 7H2"/></svg><h3>Skill gap</h3><p>Daftar skill yang paling bernilai untuk dipelajari, urut prioritas.</p></div>
+        <div class="card feature b-md reveal" style="--rd:.08s"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0-4 4m4-4 4 4"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg><h3>Baca CV PDF</h3><p>Skill dan jurusan dikenali dari CV langsung di browser, tanpa diunggah ke server.</p></div>
+        <div class="card feature b-md reveal" style="--rd:.16s"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12v17l-6-4-6 4z"/></svg><h3>Simpan &amp; lamar</h3><p>Simpan lowongan, buat draf pesan lamaran, dan tandai yang sudah kamu kirim.</p></div>
+      </div>
+    </section>
+
+    <section class="section container" style="padding-top:0">
+      <div class="cta-band reveal">
+        <h2>Mulai dari skill yang sudah kamu punya.</h2>
+        <p>Cukup beberapa menit untuk tahu posisi mana yang paling dekat dengan kamu.</p>
+        <a class="btn btn-lg" href="analisis.html">Mulai Analisis</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

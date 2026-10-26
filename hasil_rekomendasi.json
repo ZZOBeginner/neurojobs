@@ -1,0 +1,25 @@
+{
+    "status": "success",
+    "input_user": "Python SQL Data Analysis Tableau",
+    "prediksi_utama": {
+        "posisi": "Market Research Analyst",
+        "keyakinan_persen": 41.0
+    },
+    "rekomendasi_perusahaan": [
+        {
+            "posisi": "Market Research Analyst",
+            "skills_dibutuhkan": "SPSS; Python; R; Excel; Tableau; Predictive Analytics; Market Segmentation; Data Storytelling; Presentation Skills; Competitive Analysis",
+            "skor_kecocokan": 80.68
+        },
+        {
+            "posisi": "Market Research Analyst",
+            "skills_dibutuhkan": "SPSS; Python; R; Excel; Tableau; Predictive Analytics; Market Segmentation; Data Storytelling; Presentation Skills; Competitive Analysis",
+            "skor_kecocokan": 80.68
+        },
+        {
+            "posisi": "Market Research Analyst",
+            "skills_dibutuhkan": "SPSS; Python; R; Excel; Tableau; Predictive Analytics; Market Segmentation; Data Storytelling; Presentation Skills; Competitive Analysis",
+            "skor_kecocokan": 80.68
+        }
+    ]
+}

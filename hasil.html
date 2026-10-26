@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hasil Rekomendasi — NeuroJobs</title>
+  <meta name="description" content="Hasil prediksi posisi, skill gap, dan rekomendasi perusahaan berdasarkan profil kamu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="js/theme.js"></script>
+</head>
+<body data-page="result">
+  <div class="ambient" aria-hidden="true"></div>
+  <header id="site-nav"></header>
+
+  <main class="container page">
+    <div id="empty" class="card empty" hidden style="margin-top:48px">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+      <h2>Belum ada hasil analisis</h2>
+      <p>Isi jurusan, pengalaman, dan skill kamu dulu supaya kami bisa menyusun rekomendasi.</p>
+      <a class="btn btn-primary" href="analisis.html">Mulai Analisis</a>
+    </div>
+
+    <div id="content" hidden>
+      <header class="page-head result-head">
+        <span class="eyebrow">Hasil analisis</span>
+        <h1>Rekomendasi untuk kamu.</h1>
+        <div class="chips" id="res-chips"></div>
+        <div class="toolbar">
+          <select class="select select-sm" id="history-select" aria-label="Riwayat analisis"></select>
+          <button class="btn btn-glass btn-sm" id="btn-copy" type="button"></button>
+          <button class="btn btn-glass btn-sm" id="btn-print" type="button"></button>
+          <button class="btn btn-ghost btn-sm" id="btn-import" type="button"></button>
+          <input type="file" id="import-file" accept=".json,application/json" hidden>
+          <a class="btn btn-ghost btn-sm" href="analisis.html">Analisis ulang</a>
+        </div>
+      </header>
+
+      <section class="block" id="sec-roles">
+        <div class="block-head reveal">
+          <h2>Prediksi posisi</h2>
+          <p class="muted small">Diurutkan dari skor tertinggi</p>
+        </div>
+        <div id="roles"></div>
+      </section>
+
+      <section class="block" id="sec-gap" hidden>
+        <div class="block-head reveal">
+          <h2>Skill yang perlu dipelajari</h2>
+          <p class="muted small">Berdasarkan 3 posisi teratas kamu</p>
+        </div>
+        <div class="gap-grid" id="gaps"></div>
+      </section>
+
+      <section class="block" id="sec-jobs">
+        <div class="block-head reveal">
+          <h2>Rekomendasi perusahaan</h2>
+          <p class="count" id="co-count"></p>
+        </div>
+        <div class="filters">
+          <div class="filter-row">
+            <input class="input" id="f-q" type="search" placeholder="Cari perusahaan, posisi, atau skill" aria-label="Cari">
+            <div class="seg" id="f-type" role="radiogroup" aria-label="Tipe pekerjaan"></div>
+          </div>
+          <div class="filter-row">
+            <label class="range-wrap" for="f-min">Skor minimal <input type="range" id="f-min" min="0" max="90" step="5" value="0"><b id="f-min-val">0%</b></label>
+            <select class="select select-sm" id="f-sort" aria-label="Urutkan">
+              <option value="score">Skor tertinggi</option>
+              <option value="name">Nama A–Z</option>
+              <option value="new">Terbaru</option>
+            </select>
+            <button class="btn btn-glass btn-sm" id="f-saved" type="button" aria-pressed="false"></button>
+          </div>
+        </div>
+        <ul class="co-list" id="co-list"></ul>
+        <div class="empty" id="co-empty" hidden>
+          <p>Tidak ada lowongan yang cocok dengan filter ini. Coba turunkan skor minimal atau ubah pencarian.</p>
+        </div>
+        <div class="more"><button class="btn btn-glass" id="btn-more" type="button" hidden>Tampilkan lebih banyak</button></div>
+      </section>
+
+      <p class="footnote" id="footnote"></p>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/hasil.js"></script>
+</body>
+</html>

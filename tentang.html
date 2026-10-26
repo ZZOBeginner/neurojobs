@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tentang Kami — NeuroJobs</title>
+  <meta name="description" content="Bagaimana NeuroJobs mencocokkan skill kamu dengan posisi dan perusahaan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="js/theme.js"></script>
+</head>
+<body data-page="about">
+  <div class="ambient" aria-hidden="true"></div>
+  <header id="site-nav"></header>
+
+  <main class="container page">
+    <header class="page-head">
+      <span class="eyebrow">Tentang Kami</span>
+      <h1>Karier pertama seharusnya tidak membingungkan.</h1>
+      <p class="lead">NeuroJobs dibuat untuk lulusan SMK dan kuliah jurusan IT yang bingung harus melamar ke posisi apa dan perusahaan mana. Kamu isi profil, kami tunjukkan jalurnya.</p>
+    </header>
+
+    <section class="block">
+      <div class="two-col">
+        <div class="card reveal">
+          <span class="eyebrow">Pertanyaan 1</span>
+          <h3 style="margin:10px 0 12px">Posisi apa yang cocok?</h3>
+          <p class="muted">Model Random Forest mempelajari pola dari banyak contoh pasangan skill dan posisi, lalu memberi skor keyakinan untuk tiap posisi. Hasilnya adalah peringkat posisi dengan persentase kecocokan.</p>
+        </div>
+        <div class="card reveal" style="--rd:.1s">
+          <span class="eyebrow">Pertanyaan 2</span>
+          <h3 style="margin:10px 0 12px">Perusahaan mana yang paling dekat?</h3>
+          <p class="muted">Skill kamu dan requirement tiap lowongan diubah menjadi vektor, lalu dibandingkan dengan Cosine Similarity. Makin searah dua vektor itu, makin tinggi skornya.</p>
+          <div class="formula" style="margin-top:14px">cos(A, B) = (A · B) / (‖A‖ × ‖B‖)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="prose reveal">
+        <h2>Transparan soal data dan skor</h2>
+        <p>Lowongan dan nama perusahaan di situs ini adalah data contoh untuk demo, bukan lowongan sungguhan. Jangan dipakai sebagai acuan melamar.</p>
+        <p>Pada versi demo ini, skor dihitung engine di dalam situs: bobot skill inti, kemiripan kosinus, dan penyesuaian jurusan serta level pengalaman. Model Random Forest yang kamu latih sendiri bisa disambungkan lewat endpoint <code>/api/analyze</code> di server, atau hasilnya diimpor sebagai JSON dari halaman hasil.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="section-head reveal" style="margin-bottom:20px">
+        <h2>Pertanyaan umum</h2>
+      </div>
+      <div class="faq" id="faq">
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Apakah CV saya diunggah ke server?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="collapse"><div><p class="faq-a">Tidak. File PDF dibaca langsung di browser kamu untuk mencari skill. Yang dikirim ke server saat analisis hanya daftar skill, jurusan, dan pengalaman. Hasil disimpan di perangkatmu sendiri.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Kenapa CV saya tidak terbaca?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="collapse"><div><p class="faq-a">CV hasil scan atau berupa gambar tidak punya teks yang bisa dibaca. Pembaca PDF juga dimuat dari internet, jadi pastikan koneksi aktif. Kalau gagal, kamu tetap bisa mengisi skill secara manual.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Bagaimana skor dihitung?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="collapse"><div><p class="faq-a">Skill inti sebuah posisi diberi bobot lebih besar. Skor digabung dengan kemiripan kosinus, lalu ditambah penyesuaian kecil untuk jurusan, level pengalaman, dan preferensi lokasi atau tipe. Tombol "Kenapa cocok?" menjelaskan alasannya untuk tiap hasil.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Apakah lowongannya nyata?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="collapse"><div><p class="faq-a">Belum. Semua perusahaan dan lowongan adalah contoh fiktif. Tombol "Lamar" membuat draf pesan lamaran dan menandai lowongan sebagai sudah dilamar di perangkatmu, tanpa mengirim apa pun.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q" type="button" aria-expanded="false">Bisa dipakai di HP?<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><div class="collapse"><div><p class="faq-a">Bisa. Tampilan menyesuaikan layar, dan mode gelap tersedia lewat tombol di pojok kanan atas.</p></div></div></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="cta-band reveal">
+        <h2>Siap tahu posisi yang paling cocok?</h2>
+        <a class="btn btn-lg" href="analisis.html">Mulai Analisis</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/tentang.js"></script>
+</body>
+</html>

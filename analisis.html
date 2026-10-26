@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mulai Analisis — NeuroJobs</title>
+  <meta name="description" content="Isi jurusan, pengalaman, dan skill, atau unggah CV PDF untuk mendapatkan rekomendasi posisi dan perusahaan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="js/theme.js"></script>
+</head>
+<body data-page="analysis">
+  <div class="ambient" aria-hidden="true"></div>
+  <header id="site-nav"></header>
+
+  <main class="container page">
+    <header class="page-head">
+      <span class="eyebrow">Analisis</span>
+      <h1>Ceritakan latar belakang kamu.</h1>
+      <p class="lead">Isi data di bawah atau unggah CV dalam format PDF. Ringkasan di sebelah kanan ikut berubah secara langsung.</p>
+    </header>
+
+    <div class="split">
+      <form id="form" class="card form" novalidate autocomplete="off">
+        <div class="field" data-field="jurusan">
+          <label for="f-jurusan">Pendidikan / Jurusan</label>
+          <select class="select" id="f-jurusan"></select>
+          <p class="field-error" hidden></p>
+        </div>
+
+        <div class="field" data-field="exp">
+          <span class="label" id="exp-label">Pengalaman kerja</span>
+          <div class="seg" id="f-exp" role="radiogroup" aria-labelledby="exp-label"></div>
+          <p class="field-error" hidden></p>
+        </div>
+
+        <div class="field" data-field="skills">
+          <label for="skill-input">Skill</label>
+          <div class="tagbox-wrap">
+            <div class="tagbox" id="skill-box">
+              <input id="skill-input" class="tag-input" type="text" placeholder="Ketik skill lalu tekan Enter" role="combobox" aria-expanded="false" aria-controls="skill-suggest" aria-autocomplete="list">
+            </div>
+            <ul class="suggest glass" id="skill-suggest" role="listbox" hidden></ul>
+          </div>
+          <div class="chips" id="popular-skills" aria-label="Skill populer"></div>
+          <p class="field-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <span class="label" id="pref-label">Preferensi lowongan (opsional)</span>
+          <div class="pref-row">
+            <div class="seg" id="pref-type" role="radiogroup" aria-labelledby="pref-label"></div>
+            <select class="select" id="pref-loc" aria-label="Lokasi"></select>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label">Upload CV (opsional)</span>
+          <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Unggah CV PDF">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0-4 4m4-4 4 4"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+            <span id="dz-text"><strong>Tarik file PDF ke sini</strong> atau klik untuk memilih</span>
+            <input type="file" id="cv-file" accept="application/pdf,.pdf" hidden>
+          </div>
+          <p class="muted small" id="cv-status">CV dibaca di browser kamu dan tidak diunggah ke mana pun.</p>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" id="btn-analyze" type="submit">Analisis &amp; Cari Rekomendasi</button>
+      </form>
+
+      <aside class="sticky" aria-label="Ringkasan profil">
+        <div class="card preview">
+          <div class="preview-head"><h3>Ringkasan profil</h3><span class="chip chip-blue" id="pv-pct">0%</span></div>
+          <div class="bar"><span id="pv-bar" style="--w:0%"></span></div>
+          <dl class="kv">
+            <div><dt>Jurusan</dt><dd id="pv-jurusan">—</dd></div>
+            <div><dt>Pengalaman</dt><dd id="pv-exp">—</dd></div>
+            <div><dt>CV</dt><dd id="pv-cv">Belum diunggah</dd></div>
+          </dl>
+          <span class="label">Skill (<span id="pv-count">0</span>)</span>
+          <div class="chips" id="pv-skills"></div>
+          <div class="estimate" id="pv-estimate" hidden>
+            <span class="label">Perkiraan awal</span>
+            <div id="pv-est-list"></div>
+          </div>
+        </div>
+
+        <div class="card" id="history-card" hidden>
+          <div class="preview-head"><h3>Riwayat analisis</h3><button class="btn btn-ghost btn-sm" id="history-clear" type="button">Hapus semua</button></div>
+          <ul class="history" id="history-list"></ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="overlay-box">
+      <h2>Menganalisis profil kamu</h2>
+      <ul class="steps-list" id="steps"></ul>
+      <div class="bar"><span id="ov-bar" style="--w:0%"></span></div>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/analisis.js"></script>
+</body>
+</html>

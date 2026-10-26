@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cari Lowongan — NeuroJobs</title>
+  <meta name="description" content="Jelajahi lowongan contoh untuk fresh graduate IT, saring menurut tipe, level, dan lokasi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script src="js/theme.js"></script>
+</head>
+<body data-page="jobs">
+  <div class="ambient" aria-hidden="true"></div>
+  <header id="site-nav"></header>
+
+  <main class="container page">
+    <header class="page-head">
+      <span class="eyebrow">Lowongan</span>
+      <h1>Cari lowongan yang cocok.</h1>
+      <p class="lead" id="jobs-lead">Jelajahi lowongan contoh untuk posisi pertama. Jalankan analisis supaya setiap lowongan menampilkan skor kecocokan untuk kamu.</p>
+      <div class="search reveal">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input class="input" id="q" type="search" placeholder="Cari posisi, perusahaan, atau skill" aria-label="Cari lowongan">
+      </div>
+    </header>
+
+    <div class="job-filters">
+      <div class="seg" id="f-type" role="radiogroup" aria-label="Tipe pekerjaan"></div>
+      <select class="select select-sm" id="f-level" aria-label="Level"></select>
+      <select class="select select-sm" id="f-loc" aria-label="Lokasi"></select>
+      <select class="select select-sm" id="f-sort" aria-label="Urutkan"></select>
+      <button class="btn btn-glass btn-sm" id="f-saved" type="button" aria-pressed="false"></button>
+      <button class="btn btn-ghost btn-sm" id="f-reset" type="button">Reset</button>
+    </div>
+    <p class="count" id="count" style="margin-bottom:16px"></p>
+
+    <div class="job-grid" id="grid"></div>
+    <div class="empty card" id="empty" hidden>
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <h3>Tidak ada lowongan yang cocok</h3>
+      <p>Coba ubah kata kunci atau hapus beberapa filter.</p>
+      <button class="btn btn-glass" id="empty-reset" type="button">Reset filter</button>
+    </div>
+    <div class="more"><button class="btn btn-glass" id="btn-more" type="button" hidden>Tampilkan lebih banyak</button></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="js/data.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/lowongan.js"></script>
+</body>
+</html>
