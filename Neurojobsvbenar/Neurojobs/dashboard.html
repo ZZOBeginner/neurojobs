@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dashboard Data — NeuroJobs</title>
+  <meta name="description" content="Lihat isi dan kualitas dataset lowongan sebelum dianalisis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="js/theme.js"></script>
+</head>
+<body data-page="data">
+  <div class="ambient" aria-hidden="true"></div>
+  <header id="site-nav"></header>
+
+  <main class="container page">
+    <header class="page-head">
+      <span class="eyebrow">Dashboard data</span>
+      <h1>Isi dataset sebelum dianalisis.</h1>
+      <p class="lead">Cek jumlah data, sebaran posisi dan skill, serta masalah penulisan yang perlu dirapikan. Semua dihitung di browser kamu.</p>
+    </header>
+
+    <section class="card drop-state" id="state-empty" hidden>
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7z"/><path d="M14 3v4h4"/></svg>
+      <h2 id="empty-title">Unggah file CSV dataset</h2>
+      <p class="muted" id="empty-text">Tarik file .csv ke sini atau pilih dari komputer kamu. Kolom yang dikenali: JobID, Title, ExperienceLevel, YearsOfExperience, Skills, Responsibilities, Keywords.</p>
+      <button class="btn btn-primary" id="empty-pick" type="button">Pilih file CSV</button>
+    </section>
+
+    <div id="dash" hidden>
+      <div class="src-bar">
+        <div class="src-info">
+          <span class="chip chip-blue" id="src-name"></span>
+          <span class="muted small" id="src-meta"></span>
+        </div>
+        <div class="src-actions">
+          <div class="seg" id="mode" role="radiogroup" aria-label="Tampilan data">
+            <button type="button" role="radio" data-v="raw" aria-checked="true">Data asli</button>
+            <button type="button" role="radio" data-v="clean" aria-checked="false">Sudah dirapikan</button>
+          </div>
+          <button class="btn btn-glass btn-sm" id="btn-replace" type="button"></button>
+          <button class="btn btn-glass btn-sm" id="btn-download" type="button"></button>
+        </div>
+      </div>
+      <p class="mode-note muted small" id="mode-note"></p>
+
+      <div class="kpis" id="kpis"></div>
+
+      <section class="block" id="sec-charts">
+        <div class="block-head">
+          <h2>Sebaran data</h2>
+          <p class="muted small">Klik batang untuk menyaring tabel di bawah</p>
+        </div>
+        <div class="charts-grid" id="charts"></div>
+      </section>
+
+      <section class="block" id="sec-quality">
+        <div class="block-head">
+          <h2>Kualitas data</h2>
+          <p class="muted small" id="q-summary"></p>
+        </div>
+        <ul class="qlist" id="qlist"></ul>
+      </section>
+
+      <section class="block" id="sec-table">
+        <div class="block-head">
+          <h2>Isi dataset</h2>
+          <p class="count" id="t-count"></p>
+        </div>
+        <div class="filters" id="t-filters">
+          <div class="filter-row">
+            <input class="input" id="t-q" type="search" placeholder="Cari ID, posisi, skill, atau keyword" aria-label="Cari di tabel">
+            <select class="select select-sm" id="t-level" aria-label="Level pengalaman"></select>
+            <select class="select select-sm" id="t-issue" aria-label="Masalah data"></select>
+          </div>
+          <div class="chips" id="t-chips" aria-label="Filter aktif"></div>
+        </div>
+        <div class="tbl-wrap">
+          <table class="dt" id="dt">
+            <thead>
+              <tr>
+                <th scope="col"><button type="button" class="th-btn" data-sort="id">ID</button></th>
+                <th scope="col"><button type="button" class="th-btn" data-sort="title">Posisi</button></th>
+                <th scope="col"><button type="button" class="th-btn" data-sort="level">Level</button></th>
+                <th scope="col"><button type="button" class="th-btn" data-sort="years">Pengalaman</button></th>
+                <th scope="col"><button type="button" class="th-btn" data-sort="skills">Skill</button></th>
+              </tr>
+            </thead>
+            <tbody id="dt-body"></tbody>
+          </table>
+        </div>
+        <div class="empty" id="t-empty" hidden>
+          <p>Tidak ada baris yang cocok dengan filter ini.</p>
+          <button class="btn btn-glass" id="t-reset" type="button">Hapus semua filter</button>
+        </div>
+        <div class="pager" id="pager">
+          <label class="range-wrap" for="t-size">Baris per halaman
+            <select class="select select-sm" id="t-size"><option>20</option><option>50</option><option>100</option></select>
+          </label>
+          <div class="pager-nav">
+            <button class="btn btn-glass btn-sm" id="pg-prev" type="button">Sebelumnya</button>
+            <span class="muted small" id="pg-info"></span>
+            <button class="btn btn-glass btn-sm" id="pg-next" type="button">Berikutnya</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:24px">
+        <div class="cta-band">
+          <h2>Data sudah kamu cek?</h2>
+          <p>Lanjut isi profilmu untuk mendapat rekomendasi posisi dan perusahaan.</p>
+          <a class="btn btn-lg" href="analisis.html">Mulai Analisis</a>
+        </div>
+      </section>
+    </div>
+
+    <input type="file" id="csv-file" accept=".csv,text/csv" hidden>
+  </main>
+
+  <div class="tip glass" id="tip" role="tooltip" hidden></div>
+
+  <footer id="site-footer"></footer>
+  <script src="js/dataset.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
